@@ -40,9 +40,6 @@ void highlight_ATM_MENU(int index, bool selected) {
             l = 32 ;
             cout << "Exit";
             break;
-        case 5:
-            l = 32 ;
-            cout << "Game" ;
         default:
             break;
     }
@@ -69,11 +66,9 @@ int login(){
     cout << "+-------------------------------------+\n" ;
     cout << "|              Login ATM              |\n" ;
     cout << "+-------------------------------------+\n" ;
-
     // Display prompts for ID and password
     cout << "\nEnter your ID: ";
     cin >> id;
-    
     cout << "Enter your password: ";
 
     // Read in password character by character without displaying on screen
@@ -91,7 +86,7 @@ int login(){
     } 
 }
 
-
+//ทำฟังก์ชั่น เรียกฟังก์ชั่น
 int main(){
     //login
     login();
@@ -108,11 +103,10 @@ int main(){
             cout << "|              ATM Menu               |\n"; 
             cout << "+-------------------------------------+\n";
             // display the menu options
-            for (int i = 1; i <= 5; i++) {
+            for (int i = 1; i <= 4; i++) {
             cout << "| ";
             highlight_ATM_MENU(i, i == choice);
             }
-            
             cout << "|                                     |\n";
             cout << "+-------------------------------------+\n";
 
@@ -145,7 +139,7 @@ int main(){
                             cout << "+-------------------------------------+\n";
                             cout << "|               Deposit               |\n"; 
                             cout << "+-------------------------------------+\n";
-                            cout << "Deposit successful! Your new balance is: $" << fixed << setprecision(2) << balance << "\n";
+                            cout << "Deposit successful!" << "\nYour new balance is: $" << fixed << setprecision(2) << balance << "\n";
                             Sleep(2000); // Wait for 1000 milliseconds
                             system("cls"); // clear the console
                             cout << "+-------------------------------------+\n";
@@ -177,7 +171,7 @@ int main(){
                                 cout << "+-------------------------------------+\n";
                                 cout << "|               Withdraw              |\n"; 
                                 cout << "+-------------------------------------+\n";
-                                cout << "Withdrawal successful! Your new balance is: $" << fixed << setprecision(2) << balance << "\n";
+                                cout << "Withdrawal successful!" << "\nYour new balance is: $" << fixed << setprecision(2) << balance << "\n";
                                 Sleep(2000); // Wait for 1000 milliseconds
                                 system("cls"); // clear the console
                                 cout << "+-------------------------------------+\n";
@@ -220,16 +214,12 @@ int main(){
                         Sleep(2000); // Wait for 1000 milliseconds
                         main();// Return to login page 
                         break;
-
-                    case 5:
-                        cout << "game" ;
-                        break;
                         }
 
                         return 0; 
     } else {
         Login_failed();
-        Sleep(1000); // Wait for 1000 milliseconds
+        Sleep(1500); // Wait for 1000 milliseconds
         main();
                  
     }

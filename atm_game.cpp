@@ -393,7 +393,7 @@ int main(){
                             cout << "+-------------------------------------+\n";
                             cout << "|               Deposit               |\n"; 
                             cout << "+-------------------------------------+\n";
-                            cout << "Deposit successful! Your new balance is: $" << fixed << setprecision(2) << balance << "\n";
+                            cout << "Deposit successful!"<< "\nYour new balance is: $" << fixed << setprecision(2) << balance << "\n";
                             Sleep(2000); // Wait for 1000 milliseconds
                             system("cls"); // clear the console
                             cout << "+-------------------------------------+\n";
@@ -425,7 +425,7 @@ int main(){
                                 cout << "+-------------------------------------+\n";
                                 cout << "|               Withdraw              |\n"; 
                                 cout << "+-------------------------------------+\n";
-                                cout << "Withdrawal successful! Your new balance is: $" << fixed << setprecision(2) << balance << "\n";
+                                cout << "Withdrawal successful!" << "\nYour new balance is: $" << fixed << setprecision(2) << balance << "\n";
                                 Sleep(2000); // Wait for 1000 milliseconds
                                 system("cls"); // clear the console
                                 cout << "+-------------------------------------+\n";

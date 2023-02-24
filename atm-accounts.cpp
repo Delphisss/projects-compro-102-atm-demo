@@ -4,87 +4,49 @@
 
 using namespace std;
 
-const int MAX_ACCOUNTS = 100;
-const int ID_LENGTH = 4;
-
 struct Account {
-    string id;
-    double balance;
+  int id;
+  float balance;
 };
 
-Account accounts[MAX_ACCOUNTS];
-
-int findAccountIndex(string id) {
-    for (int i = 0; i < MAX_ACCOUNTS; i++) {
-        if (accounts[i].id == id) {
-            return i;
-        }
-    }
-    return -1;
+// read data from file and populate array of structures
+void readData(Account accounts[], int& numAccounts) {
+  // code to read data from file and populate accounts array
 }
 
-void login() {
-    string id;
-    cout << "Please enter your ID: ";
-    cin >> id;
+// write data from array of structures to file
+void writeData(Account accounts[], int numAccounts) {
+  // code to write data from accounts array to file
+}
 
-    int index = findAccountIndex(id.substr(id.length() - ID_LENGTH));
-    if (index == -1) {
-        cout << "Account not found." << endl;
-    }
-    else {
-        cout << "Welcome, " << id << "." << endl;
+// function to calculate deposit
+void deposit(Account accounts[], int numAccounts, int loggedInIndex, float amount) {
+  accounts[loggedInIndex].balance += amount;
+  writeData(accounts, numAccounts);
+}
 
-        while (true) {
-            int choice;
-            cout << endl;
-            cout << "1. Deposit" << endl;
-            cout << "2. Withdraw" << endl;
-            cout << "3. Check balance" << endl;
-            cout << "4. Logout" << endl;
-            cout << "Enter your choice (1-4): ";
-            cin >> choice;
+// function to calculate withdrawal
+void withdraw(Account accounts[], int numAccounts, int loggedInIndex, float amount) {
+  accounts[loggedInIndex].balance -= amount;
+  writeData(accounts, numAccounts);
+}
 
-            if (choice == 1) {
-                double amount;
-                cout << "Enter amount to deposit: ";
-                cin >> amount;
-                accounts[index].balance += amount;
-                cout << "Deposit successful. Current balance is " << fixed << setprecision(2) << accounts[index].balance << endl;
-            }
-            else if (choice == 2) {
-                double amount;
-                cout << "Enter amount to withdraw: ";
-                cin >> amount;
-                if (amount > accounts[index].balance) {
-                    cout << "Insufficient funds." << endl;
-                }
-                else {
-                    accounts[index].balance -= amount;
-                    cout << "Withdrawal successful. Current balance is " << fixed << setprecision(2) << accounts[index].balance << endl;
-                }
-            }
-            else if (choice == 3) {
-                cout << "Current balance is " << fixed << setprecision(2) << accounts[index].balance << endl;
-            }
-            else if (choice == 4) {
-                cout << "Logging out." << endl;
-                break;
-            }
-            else {
-                cout << "Invalid choice. Please enter a number from 1 to 4." << endl;
-            }
-        }
-    }
+// function to check balance
+float checkBalance(Account accounts[], int numAccounts, int loggedInIndex) {
+  return accounts[loggedInIndex].balance;
 }
 
 int main() {
-    // Initialize accounts
-    accounts[0] = { "12345678", 100.00 };
-    accounts[1] = { "98765432", 50.00 };
-    accounts[2] = { "24681357", 200.00 };
+  Account accounts[100];
+  int numAccounts = 0;
+  readData(accounts, numAccounts);
 
-    login();
+  // code to handle login
+  int loggedInIndex = 0; // assume logged in as first account in array
 
-    return 0;
+  // code to handle deposit, withdrawal, and checking balance
+  deposit(accounts, numAccounts, loggedInIndex, 100);
+  withdraw(accounts, numAccounts, loggedInIndex, 50);
+  float balance = checkBalance(accounts, numAccounts, loggedInIndex);
+  return 0;
 }
